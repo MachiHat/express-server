@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "TO KILL A MOCKINGBIRD",
+    "author": "Harper Lee",
+    "price": 25.99,
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg/330px-To_Kill_a_Mockingbird_%28first_edition_cover%29.jpg"
+  },
+  {
+    "id": "2",
+    "title": "THE BLACK CAT",
+    "author": "Edgar Allan Poe",
+    "price": 16.99,
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Poe_black_cat_byam_shaw.JPG/300px-Poe_black_cat_byam_shaw.JPG"
+  },
+  {
+    "id": "3",
+    "title": "THE PICTURE OF DORIAN GRAY",
+    "author": "Oscar Wilde",
+    "price": 31.99,
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Lippincott_doriangray.jpg/330px-Lippincott_doriangray.jpg"
+  }
+]

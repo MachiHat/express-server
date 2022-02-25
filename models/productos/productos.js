@@ -4,7 +4,7 @@ class ContenedorArchivo {
     }
     static idCount = 0;
   
-    listarAll() {
+    listAll() {
       return [...this.products]
     }
   
@@ -13,11 +13,11 @@ class ContenedorArchivo {
       return product || { error: `Product with id: ${id} does not exist!` }
     }
       
-    guardar(product) {
+    save(product) {
       const { title, price, thumbnail } = product
-      if (!title || !price || !thumbnail ) return { error: 'Attribute missed.' }
-      if (price < 0 || isNaN(price)) return { error: 'Attribute price must be a positive number.' }
-      const newProduct = { title, price, thumbnail, id: ++ProductsApi.idCount }
+      
+      
+      const newProduct = { title, price, thumbnail, id: ++ContenedorArchivo.idCount }
       this.products.push(newProduct)
       return newProduct
     }

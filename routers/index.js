@@ -1,13 +1,11 @@
-const express = require('express');
-const productsRoutes = require('./products/products.routes');
+const express = require('express')
 
-const router = express.Router();
+const productRoutes = require('./products/products.routes')
 
-// Middlewares
-router.use(express.json());
-router.use(express.urlencoded({ extended: true }));
+const router = express.Router()
 
 // Routes
-router.use('/products', productsRoutes);
+router.use('/productos', productRoutes)
 
-module.exports = router;
+
+module.exports = router

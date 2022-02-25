@@ -1,76 +1,22 @@
 const express = require('express');
-const products = require('../../data/products.json');
+const {
+  allProducts,
+  deleteProduct,
+  newProduct,
+  productoById,
+  updateProduct
+} = require('../../controllers/products.controllers')
 
 const router = express.Router();
 
-// MIDDLEWARE
+router.get('/', allProducts);
 
-router.get('/', (req, res) => {
-  const { maxPrice, search } = req.query;
-  let productsResponse = [...products];
-  if (Object.keys(req.query).length > 0) {
-    if (maxPrice) {
-      if (isNaN(+maxPrice)) {
-        return res.status(400).json({success: false, error: 'maxPrice must be a valid number'});
-      }
-      productsResponse = productsResponse.filter(product => product.price <= +maxPrice);
-    }
-    if (search) {
-      productsResponse = productsResponse.filter(product => product.name.toLowerCase().startsWith(search.toLowerCase()))
-    }
-    return res.json({success: true, result: productsResponse });
-  }
-    return res.json({success: true, result: productsResponse });
-}); 
+router.get('/:idProduct',   productoById);
 
-router.get('/:productId', (req, res) => {
-  const { productId } = req.params;
-  const product = products.find(product => product.id === +productId);
-  if (!product) {
-    return res.status(404).json({ success: false, error: `OH NO!!! Product with id: ${productId} does not exist! You should really doublecheck that...`});
-  }
-  return res.json({ success: true, result: product });
-}); 
+router.post('/', newProduct);
 
+router.put('/:idProduct', updateProduct);
 
-router.post('/', (req, res) => {
-  const { name, price, image } = req.body;
-  if ( !name || !price || !image) {
-    return res.status(400).json({ succes: false, error: 'Wrong body format' });
-  }
-  const newProduct = {
-    id: products.length + 1,
-    name,
-    price,
-    image
-  };
-  products.push(newProduct);
-  return res.json({ success: true, result: newProduct });
-}); 
-
-router.put('/:productId', (req, res) => {
-  const { params: { productId }, body: { name, price, image} } = req;
-  if ( !name || !price || !image) {
-    return res.status(400).json({ success: false, error: 'Wrong body format' });
-  };
-  const productIndex = products.findIndex((product) => product.id === +productId);
-  if (productIndex < 0) return res.status(404).json({ success: false, error: `Product with id: ${productId} does not exist!`});
-  const newProduct = {
-    ...products[productIndex],
-    name,
-    price,
-    image
-  };
-  products[productIndex] = newProduct;
-  return res.json({ success: true, result: newProduct});
-}); 
-
-router.delete('/:productId', (req, res) => {
-  const { productId } = req.params;
-  const productIndex = products.findIndex(product => product.id === +productId);
-  if (productIndex < 0) return res.status(404).json({ success: false, error: `Product with id ${productId} does not exist!`});
-  products.splice(productIndex, 1);
-  return res.json({ success: true, result: 'product correctly eliminated' });
-}); 
+router.delete('/:idProduct', deleteProduct);
 
 module.exports = router;

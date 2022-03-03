@@ -1,36 +1,39 @@
 const socket = io.connect();
 
-//------------------------------------------------------------------------------------
-
-const formAgregarProducto = document.getElementById('formAgregarProducto')
-formAgregarProducto.addEventListener('submit', e => {
+const formAltaProducto = document.getElementById('formularioAlta')
+formAltaProducto.addEventListener('submit', e => {
     e.preventDefault()
     const producto = {
-        title: formAgregarProducto[0].value,
-        price: formAgregarProducto[1].value,
-        thumbnail: formAgregarProducto[2].value
+        nombre: formAltaProducto[0].value,
+        precio: formAltaProducto[1].value,
+        imagen: formAltaProducto[2].value,
     }
-    socket.emit('update', producto);
-    formAgregarProducto.reset()
+
+    socket.emit('createProducto', producto);
+    formAltaProducto.reset();
 })
 
-socket.on('productos', productos => {
+
+socket.on('getProductos', productos => {
     makeHtmlTable(productos).then(html => {
+
         document.getElementById('productos').innerHTML = html
     })
 });
 
 function makeHtmlTable(productos) {
-    return fetch('plantillas/tabla-productos.hbs')
+    return fetch('views/partials/tablaProductos.hbs')
         .then(respuesta => respuesta.text())
         .then(plantilla => {
             const template = Handlebars.compile(plantilla);
-            const html = template({ productos })
+            let hayProductos = productos.length
+            const html = template({ hayProductos, productos })
             return html
         })
 }
 
-//-------------------------------------------------------------------------------------
+
+//Socket mensajes
 
 const inputUsername = document.getElementById('inputUsername')
 const inputMensaje = document.getElementById('inputMensaje')

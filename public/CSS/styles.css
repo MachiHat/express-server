@@ -1,0 +1,39 @@
+
+body {
+  background-image: url("darkpanel.png");
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  color: white;
+}
+
+.jumbotron {
+  margin: 25px;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+}
+
+hr {
+    background-color: #ddd;
+}
+
+.part1 {
+  background-color: rgb(128, 132, 135, 0.4);
+  padding: 25px;
+}
+
+.part2 {
+  background-color: rgb(128, 132, 135, 0.4);
+  padding: 25px;
+  min-height: 320px;
+}
+
+.gracias {
+  float: right;
+  color: grey;
+  font-size: 1rem;
+  padding: 2rem;
+  margin-top: 6rem
+}

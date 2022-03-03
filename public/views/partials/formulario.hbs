@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>Carga de productos</h1>
+
+    <form class="needs-validation" id="formularioAlta" novalidate>
+        <div class="row g-3">
+
+            <div class="col-12">
+                <label for="title" class="form-label">Descripción</label>
+                <input name="title" type="text" class="form-control" id="title" placeholder="Calculadora" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese un texto válido
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="price" class="form-label">Precio</label>
+                <input name="price" type="number" class="form-control" id="price" placeholder="16,4" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese un precio válido
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="url" class="form-label">URL Imagen</label>
+                <input name="url" type="url" class="form-control" id="url"
+                    placeholder="https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png"
+                    required>
+                <div class="invalid-feedback">
+                    Por favor ingrese una url válida
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <div class="text-center">
+            <button class="btn btn-secondary btn-lg col-3-lg" type="submit">Cargar producto</button>
+        </div>
+    </form>
+
+</div>

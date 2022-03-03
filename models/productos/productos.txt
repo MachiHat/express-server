@@ -1,0 +1,14 @@
+[
+  {
+    "nombre": "Cuaderno",
+    "precio": 11,
+    "imagen": "https://cdn3.iconfinder.com/data/icons/education-209/64/book-note-paper-school-128.png",
+    "id": "1"
+  },
+  {
+    "nombre": "Reloj",
+    "precio": "202",
+    "imagen": "https://cdn3.iconfinder.com/data/icons/education-209/64/clock-stopwatch-timer-time-128.png",
+    "id": "2"
+  }
+]

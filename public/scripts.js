@@ -41,12 +41,12 @@ formPublicarMensaje.addEventListener('submit', e => {
     e.preventDefault()
 
     const mensaje = { autor: inputUsername.value, texto: inputMensaje.value }
-    socket.emit('nuevoMensaje', mensaje);
+    socket.emit('createMensaje', mensaje);
     formPublicarMensaje.reset()
     inputMensaje.focus()
 })
 
-socket.on('mensajes', mensajes => {
+socket.on('getMensajes', mensajes => {
     console.log(mensajes);
     const html = makeHtmlList(mensajes)
     document.getElementById('mensajes').innerHTML = html;
@@ -55,7 +55,7 @@ socket.on('mensajes', mensajes => {
 function makeHtmlList(mensajes) {
     return mensajes.map(mensaje => {
         return (`
-            <div>
+            <div style="background-color: white; padding: 10px">
                 <b style="color:blue;">${mensaje.autor}</b>
                 [<span style="color:brown;">${mensaje.fyh}</span>] :
                 <i style="color:green;">${mensaje.texto}</i>

@@ -29,21 +29,27 @@
             </div>
         </div>
         <div class="jumbotron">
-            <h1>Centro de Mensajes</h1>
+            <h1>Chat</h1>
             <br>
+
             <input type="text" id="inputUsername" class="form-control w-50 my-2 mr-2" placeholder="Ingresá tu email">
+
             <hr>
-            <div id="mensajes"></div>
+
+
             <form id="formPublicarMensaje" class="form-inline" autocomplete="off">
                 <div class="form-group">
                     <input disabled id="inputMensaje" type="text" class="form-control my-2 mr-2"
                         placeholder="Ingresá un mensaje...">
-                    <button disabled id="btnEnviar" type="submit" class="btn btn-primary my-2">Enviar!</button>
+                    <button disabled id="btnEnviar" type="submit"
+                        class="btn btn-secondary btn-lg col-3-lg">Enviar!</button>
                 </div>
             </form>
+            <br>
+            <div id="mensajes"></div>
         </div>
     </main>
-
+    <script src="socket.io/socket.io.js"></script>
     <script src="./scripts.js"></script>
 </body>
 

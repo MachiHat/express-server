@@ -1,9 +1,14 @@
 const express = require('express')
 const productRoutes = require('./routers/index')
 
+const { Server: HttpServer } = require('http')
+const { Server: Socket } = require('socket.io')
+
 const PORT = process.env.PORT || 8080
 const app = express()
 const path = require('path');
+const httpServer = new HttpServer(app)
+const io = new Socket(httpServer)
 
 // Middleware
 app.use(express.json())
@@ -12,23 +17,6 @@ app.use(express.static(path.resolve(__dirname, './public')));
 
 // Routes
 app.use('/', productRoutes)
-
-// // Renders public/index.html
-// app.get('/', function(req, res) {
-//     res.sendFile(path.join(__dirname, '/index.html'));
-// })
-
-// Setting path where views will be
-app.set('views', './views/pug')
-// Connecting views with engine templates
-app.set('view engine', 'pug')
-
-// Renders index.handlebars
-app.get('/', function(req, res) {
-    res.render('index')
-})
-
-
 
 
 const connectedServer = app.listen(PORT, ()=>{

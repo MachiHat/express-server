@@ -76,7 +76,7 @@ io.on('connection', async (socket) => {
 const PORT = process.env.PORT || 8080
 
 serverHttp.listen(PORT, () => {
-    console.log("Server is up and runnion on port ", PORT)
+    console.log("Server is up and running on port ", PORT)
 })
 
 serverHttp.on('error', (error) => { console.log(error.message) })

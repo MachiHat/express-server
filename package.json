@@ -15,8 +15,11 @@
   "dependencies": {
     "express": "^4.17.2",
     "express-handlebars": "^6.0.2",
+    "knex": "^1.0.4",
+    "mysql": "^2.18.1",
     "node-modules": "^1.0.1",
     "nodemon": "^2.0.15",
-    "socket.io": "^4.4.1"
+    "socket.io": "^4.4.1",
+    "sqlite3": "^5.0.2"
   }
 }

@@ -1,12 +1,11 @@
 const express = require('express')
-// const apiRoutes = require('./routers/index')
-// const path = require('path')
 const http = require('http')
 const socketIo = require('socket.io');
+const config = require('./db/config.js');
 
-const contenedorProducto = require('./models/productos/contenedorProductos')
-const contenedorMensaje = require('./models/chat/contenedorChat')
-
+// const contenedorProducto = require('./contenedores/productos/contenedorProductos')
+// const contenedorMensaje = require('./contenedores/chat/contenedorChat')
+const contenedorSQL = require('./contenedores/ContenedorSQL');
 
 //Instancia servidor, socket y api
 
@@ -14,11 +13,13 @@ const app = express()
 const serverHttp = http.createServer(app)
 const io = socketIo(serverHttp)
 
-const productosApi = new contenedorProducto()
-const mensajesApi = new contenedorMensaje()
+// const productosApi = new contenedorProducto()
+// const mensajesApi = new contenedorMensaje()
+
+const productosApi = new contenedorSQL(config.mariaDb, 'productos');
+const mensajesApi = new contenedorSQL(config.sqlite3, 'mensajes');
 
 //-------------------
-
 
 //Middleware
 
